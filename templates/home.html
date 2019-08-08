@@ -2,17 +2,57 @@
 
 {% block content %}
 	<style>
-		* {
-			text-align: center;
-		}
 		.jumbotron {
 			background-color: inherit;
 			padding-top: 0%;
 			padding-bottom: 0%;
+			text-align: center;
 		}
+		form {
+			text-align: left;
+			display: inherit;
+		}
+
 	</style>
 	<div class='jumbotron'>
 		<h1 style="font-family: 'Pacifico';">Post-its</h1>
 		<p>A simple note-taking webapp</p>
 	</div>
+	<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#postform'>New</button>
+	<div class="modal fade" id="postform" tabindex="-1" role="dialog" aria-labelledby="Post-it" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">New note</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label class="col-form-label">Title:</label>
+	            <input type="text" class="form-control" id="title">
+	          </div>
+	          <div class="form-group">
+	            <label class="col-form-label">Note:</label>
+	            <textarea class="form-control" id="content"></textarea>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Post</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<ul>
+		{{ for post in posts }}
+		<li>
+			<h2>{{ post.title }}</h2>
+			<p>{{ post.content }}</p>
+		</li>
+		{{ endfor }}
+	</ul>
 {% endblock %}
