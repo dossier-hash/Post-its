@@ -44,7 +44,7 @@ def delete(id):
 		db.session.commit()
 		return redirect('/')
 	except:
-		return "'Twas a problem deleting"
+		return "There was a problem deleting"
 
 if __name__ == '__main__':
 	app.run(debug=false)
