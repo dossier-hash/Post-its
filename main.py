@@ -35,5 +35,16 @@ def home():
 		posts = Postit.query.order_by(Postit.id).all()
 		return render_template('home.html', posts=posts) 
 
+@app.route('/delete/<int:id>')
+def delete(id):
+	post_to_delete = Postit.query.get_or_404(id)
+
+	try:
+		db.session.delete(post_to_delete)
+		db.session.commit()
+		return redirect('/')
+	except:
+		return "'Twas a problem deleting"
+
 if __name__ == '__main__':
 	app.run(debug=True)

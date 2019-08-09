@@ -2,6 +2,7 @@
 
 {% block content %}
 	<style>
+
 		.jumbotron {
 			background-color: inherit;
 			padding-top: 0%;
@@ -12,7 +13,61 @@
 			text-align: left;
 			display: inherit;
 		}
-
+		h2,p{
+		  /*font-size:100%;*/
+		  font-weight:normal;
+		}
+		p {
+			font-family:"Reenie Beanie",arial,sans-serif;
+			font-size: 180%;
+		}
+		ul,li{
+		  list-style:none;
+		}
+		ul{
+		  overflow:hidden;
+		  padding:3em;
+		}
+		ul li a{
+		  text-decoration:none;
+		  color:#000;
+		  background:#ffc;
+		  display:block;
+		  height:15em;
+		  width:15em;
+		  padding:1em;
+		}
+		ul li a{
+		  padding:1em;
+		  /* Firefox */
+		  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+		  /* Safari+Chrome */
+		  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+		  /* Opera */
+		  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+		}
+		ul li a:hover,ul li a:focus{
+		  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+		  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+		  box-shadow:10px 10px 7px rgba(0,0,0,.7);
+		  -webkit-transform: scale(1.25);
+		  -moz-transform: scale(1.25);
+		  -o-transform: scale(1.25);
+		  position:relative;
+		  z-index:5;
+		}
+		ul li{
+		  margin:1em;
+		  float:left;
+		}
+		.content {
+		  position: relative;
+		}
+		#right-panel-link {
+		  position: absolute;
+		  top: 0;
+		  right: 0;
+		}
 	</style>
 	<div class='jumbotron'>
 		<h1 style="font-family: 'Pacifico';">Post-its</h1>
@@ -21,20 +76,29 @@
 
 	<div class='container'>
 		<form method='POST'>
-			Title:<br>
-			<input type='text' name='title' \><br>
-			Post:<br>
-			<textarea name='content'></textarea>
-			<input type='submit' name='submit'\>
+			<div class='form-group'>
+				Title:<br>
+				<input type='text' name='title' \><br>
+			</div>
+			<div class='form-group'>
+				Post:<br>
+				<textarea name='content'></textarea>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 	</div>
 
-	{% for post in posts %}
 	<ul>
+		{% for post in posts %}
 		<li>
-			<h2>{{ post.title }}</h2>
-			<p>{{ post.content }}</p>
+			<a href='delete/{{ post.id }}'>
+				<div class="content">
+				<h2>{{ post.title }}</h2>
+				<p>{{ post.content }}</p>
+			</div>
+			</a>
 		</li>
+		{% endfor %}
+
 	</ul>
-	{% endfor %}
 {% endblock %}
