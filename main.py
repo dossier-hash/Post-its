@@ -11,7 +11,6 @@ class Postit(db.Model):
 	title = db.Column(db.String(50))
 	#Can not be null/empty
 	content = db.Column(db.String(250), nullable=False)
-
 	def __repr__(self):
 		return f'<Post-it {self.id} created>'
 
@@ -31,7 +30,7 @@ def home():
 			flash('New post added')
 			return redirect('/')
 		except:
-			return redirect('/404')
+			return redirect('/')
 	else:
 		posts = Postit.query.order_by(Postit.id).all()
 		return render_template('home.html', posts=posts) 
