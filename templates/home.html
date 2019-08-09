@@ -36,12 +36,11 @@
 		  color:#000;
 		  background:#ffc;
 		  display:block;
-		  height:15em;
-		  width:15em;
+		  height:16em;
+		  width:20em;
 		  padding:1em;
 		}
 		ul li a{
-		  padding:1em;
 		  /* Firefox */
 		  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
 		  /* Safari+Chrome */
@@ -63,14 +62,7 @@
 		  margin:1em;
 		  float:left;
 		}
-		.content {
-		  position: relative;
-		}
-		#right-panel-link {
-		  position: absolute;
-		  top: 0;
-		  right: 0;
-		}
+
 	</style>
 	<div class='jumbotron'>
 		<h1 style="font-family: 'Pacifico';">Post-its</h1>
@@ -95,10 +87,8 @@
 		{% for post in posts %}
 		<li>
 			<a href='delete/{{ post.id }}'>
-				<div class="content">
 				<h2>{{ post.title }}</h2>
 				<p>{{ post.content }}</p>
-			</div>
 			</a>
 		</li>
 		{% endfor %}
