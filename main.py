@@ -47,4 +47,4 @@ def delete(id):
 		return "'Twas a problem deleting"
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(debug=false)
